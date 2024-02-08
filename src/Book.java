@@ -1,4 +1,4 @@
-public class Book {
+public class Book extends LibraryCatalog{
 
     private String title;
     private String author;
@@ -59,6 +59,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Title: " + title + ", Author: " + author + ", ISBN: " + ISBN + ", Genre: " + genre + ", Publication Year: " + publicationYear;
+        return "<-- ID" +
+                "\n|Title: " + title + "\n|Author: " + author + "\n|ISBN: " + ISBN + "\n|Genre: " + genre + "\n|Publication Year: " + publicationYear + "\n";
     }
 }

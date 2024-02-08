@@ -6,13 +6,18 @@ public class LibraryMember {
     private int membershipID;
     private int age;
 
-    public LibraryMember(String name, String contactInfo, String address, int membershipID, int age){
+    public LibraryMember() {
+
+    }
+
+    public LibraryMember(String name, String contactInfo, String address, int membershipID, int age) {
         this.name = name;
         this.contactInfo = contactInfo;
         this.address = address;
         this.membershipID = membershipID;
         this.age = age;
     }
+
 
     public String getName() {
         return name;
@@ -52,5 +57,12 @@ public class LibraryMember {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+
+    @Override
+    public String toString() {
+        return "<----Library Member---->" +
+                "\n|Name: " + name + "\n|Contact Information: " + contactInfo + "\n|Address: " + address + "\n|Membership ID: " + membershipID + "\n|Age: " + age + "\n";
     }
 }
