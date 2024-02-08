@@ -1,9 +1,11 @@
-public class MainStaff {
+public class MainStaff extends MainBooks{
 
     public static void main(String[] args) {
+    LibraryMember libraryMember = new LibraryMember();
     LibraryCatalog libraryCatalog = new LibraryCatalog();
     LibraryStaff libraryStaff = new LibraryStaff();
-    LibraryMember libraryMember = new LibraryMember();
+
+
 
     LibraryMember jamie_doyle = new LibraryMember("Jamie Doyle", "087-1473522", "41 Clifton Park Shankill", libraryMember.getMembershipID(),20);
     LibraryMember johnathon_byrne = new LibraryMember("Mr. Johnathon Byrne", "087-3256585", "196 Town Cliffs Dublin", libraryMember.getMembershipID(),43);
@@ -15,6 +17,9 @@ public class MainStaff {
     libraryStaff.addNewLibraryMember(john_peter_mcNealy);
     libraryStaff.addNewLibraryMember(marge_o_neill);
 
-    libraryStaff.showLibraryMembers();
+    libraryStaff.addBorrowingBooks(jamie_doyle, harryPotterPart2);
+    System.out.println();
+    libraryStaff.showBorrowedBooksAndMember();
+
     }
 }//class

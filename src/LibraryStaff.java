@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class LibraryStaff extends LibraryMember{
+public class LibraryStaff extends Book{
 
     private String name;
     private String position;
@@ -10,9 +10,13 @@ public class LibraryStaff extends LibraryMember{
     int id = 1;
 
     Map<LibraryMember,Book> borrowedBooks = new HashMap<>();
-    Map<Integer, LibraryMember> libraryMembers = new HashMap<>();
+    Map<Integer, LibraryMember> libraryMembersInMap = new HashMap<>();
 
-    LibraryCatalog libraryCatalog = new LibraryCatalog();
+    private LibraryCatalog libraryCatalog;
+
+    public LibraryCatalog getLibraryCatalog() {
+        return libraryCatalog;
+    }
 
     public LibraryStaff(){
 
@@ -28,29 +32,34 @@ public class LibraryStaff extends LibraryMember{
 
     public void addNewLibraryMember(LibraryMember libraryMember){
         libraryMember.setMembershipID(id);
-        libraryMembers.put(id++, libraryMember);
+        libraryMembersInMap.put(id++, libraryMember);
     }
 
 
     public void showLibraryMembers(){
-        for (Map.Entry<Integer, LibraryMember> entry : libraryMembers.entrySet()){
+        for (Map.Entry<Integer, LibraryMember> entry : libraryMembersInMap.entrySet()){
             System.out.println(entry.getValue());
         }
     }
 
-    public void lookupMemberUsingID(LibraryMember membershipID){
-
-    }
-
-    public void borrowingBooks(LibraryMember libraryMember, Book book){
-        borrowedBooks.put(libraryMember,book);
-        libraryCatalog.collectionOfBooks.remove(book);
-    }
-
-    public void showBorrowedBooks(){
-        for (Map.Entry<LibraryMember, Book> entry : borrowedBooks.entrySet()){
-            System.out.println(entry.getKey().getMembershipID() + " : " + entry.getValue());
+    public void lookupMemberUsingID(int id){
+        for (Map.Entry<Integer, LibraryMember> entry : libraryMembersInMap.entrySet()){
+            if(entry.getKey().equals(id)){
+                System.out.println(entry.getValue());
+            }
         }
+    }
+
+    public void addBorrowingBooks(LibraryMember libraryMember, Book book) {
+        borrowedBooks.put(libraryMember, book);
+    }
+
+    public void showBorrowedBooksAndMember(){
+        for (Map.Entry<LibraryMember, Book> entry : borrowedBooks.entrySet()){
+            System.out.println(entry.getValue());
+            lookupMemberUsingID(entry.getKey().getMembershipID());
+        }
+
     }
 
 

@@ -6,6 +6,7 @@ public class Book extends LibraryCatalog{
     private String genre;
     private int publicationYear;
 
+
     public Book(){
     }
 
